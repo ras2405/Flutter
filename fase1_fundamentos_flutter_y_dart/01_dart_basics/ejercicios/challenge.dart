@@ -37,11 +37,11 @@ enum UserRole { admin, normal }
 // Declara una clase Usuario con las propiedades: name (String), age (int),
 // hobbies (List<String>), role (UserRole).
 class Usuario {
-  String name;
-  int age;
-  List<String> hobbies;
-  UserRole role;
-  int? bonus;
+  final String name;
+  final int age;
+  final List<String> hobbies;
+  final UserRole role;
+  final int? bonus;
 
   Usuario({
     required this.name,
@@ -65,7 +65,7 @@ Future<Usuario> getUserProfile(String username) async {
   await Future.delayed(const Duration(milliseconds: 500));
 
   // Determina el rol según el username.
-  late UserRole currentRole;
+  final UserRole currentRole;
   // Usando un if para determinar el rol del usuario
   if (username == 'admin') {
     currentRole = UserRole.admin;
