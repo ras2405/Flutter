@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
       ),
       home: const MyHomePage(
         title: 'Ciclo de vida en Flutter',
+        showCounter: true,
       ),
     );
   }
@@ -26,9 +27,10 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   final String title;
 
-  // TODO: Agregar propiedad que será usada para mostrar u ocultar el contador.
+  // Agregar propiedad que será usada para mostrar u ocultar el contador.
+  final bool showCounter;
 
-  const MyHomePage({super.key, required this.title});
+  const MyHomePage({super.key, required this.title, required this.showCounter});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -38,17 +40,40 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
-  // TODO(1): Imprimir en consola "initState ejecutado" dentro de este método
+  // Imprimir en consola "initState ejecutado" dentro de este método
+  @override
+  void initState() {
+    super.initState();
+    print("initState ejecutado");
+  }
 
-  // TODO(2): Detectar si cambió `showCounter` usando didUpdateWidget.
+  // Detectar si cambió `showCounter` usando didUpdateWidget.
+  @override
+  void didUpdateWidget(covariant MyHomePage oldWidget) {
+    // covariant nos deja que oldWidget sea mismo tipo que widget
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.showCounter != widget.showCounter) {
+      print("showCounter cambio a ${widget.showCounter}");
+    }
+  }
 
-  // TODO(3): Imprimir en consola "dispose ejecutado" al destruir el widget.
+  // Imprimir en consola "dispose ejecutado" al destruir el widget.
+  @override
+  void dispose() {
+    print("dispose ejecutado");
+    super.dispose();
+  }
 
-  // TODO(4): Mostrar un SnackBar si el contador alcanza 5. Con ScaffoldMessenger.of(context).showSnackBar(...)
+  // Mostrar un SnackBar si el contador alcanza 5. Con ScaffoldMessenger.of(context).showSnackBar(...)
   void _incrementCounter() {
     setState(() {
       _counter++;
     });
+    if (_counter == 5) {
+      ScaffoldMessenger.of(
+        context, // buildContext del widget actual
+      ).showSnackBar(const SnackBar(content: Text('Contador alcanzó 5')));
+    }
   }
 
   @override
