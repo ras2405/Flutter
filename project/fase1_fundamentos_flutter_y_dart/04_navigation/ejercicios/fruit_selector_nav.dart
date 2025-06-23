@@ -20,9 +20,18 @@ class _FruitSelectorScreenState extends State<FruitSelectorScreen> {
   String? _selectedFruit;
 
   void _openSelectionScreen() async {
-    // TODO(1): Usar Navigator.push para ir a la pantalla de selección y esperar el resultado
+    // Usar Navigator.push para ir a la pantalla de selección y esperar el resultado
+    final result = await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const FruitSelectionScreen()),
+    );
 
-    // TODO(2): Si hay resultado, actualizar el estado
+    // Si hay resultado, actualizar el estado
+    if (result != null) {
+      setState(() {
+        _selectedFruit = result;
+      });
+    }
   }
 
   @override
@@ -41,7 +50,7 @@ class _FruitSelectorScreenState extends State<FruitSelectorScreen> {
             ElevatedButton(
               onPressed: _openSelectionScreen,
               child: const Text('Elegir fruta'),
-            )
+            ),
           ],
         ),
       ),
@@ -66,7 +75,8 @@ class FruitSelectionScreen extends StatelessWidget {
           return ListTile(
             title: Text(fruit),
             onTap: () {
-              // TODO(3): Al seleccionar una fruta, usar Navigator.pop para devolver el valor
+              // Al seleccionar una fruta, usar Navigator.pop para devolver el valor
+              Navigator.pop(context, fruit);
             },
           );
         },
