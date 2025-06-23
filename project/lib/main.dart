@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 
+import 'features/integrador_fase1/challenge_integrador_fase1.dart';
+
+// void main() {
+//   runApp(const MyApp());
+// }
+
 void main() {
-  runApp(const MyApp());
+  runApp(const MaterialApp(home: RegistroMascotaScreen()));
 }
 
 class MyApp extends StatelessWidget {
