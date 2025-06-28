@@ -3,9 +3,18 @@ import 'package:bloc/bloc.dart';
 
 // ========== CUBIT IMPLEMENTATION ==========
 
-// TODO(1): Implementar TemperatureCubit
+// Implementar TemperatureCubit
 class TemperatureCubit extends Cubit<double> {
   // Debe iniciar en 20.0 y exponer métodos increase() y decrease()
+  TemperatureCubit() : super(20.0);
+
+  void increase() {
+    emit(state + 1);
+  }
+
+  void decrease() {
+    emit(state - 1);
+  }
 }
 
 // ========== BLOC IMPLEMENTATION ==========
@@ -16,11 +25,20 @@ class IncreaseTemp extends TemperatureEvent {}
 
 class DecreaseTemp extends TemperatureEvent {}
 
-// TODO(2): Implementar TemperatureBloc
+// Implementar TemperatureBloc
 class TemperatureBloc extends Bloc<TemperatureEvent, double> {
   // Debe manejar IncreaseTemp y DecreaseTemp usando on<Event>() y emitir el nuevo estado
-}
 
+  TemperatureBloc() : super(20.0) {
+    on<IncreaseTemp>((event, emit) {
+      emit(state + 1);
+    });
+
+    on<DecreaseTemp>((event, emit) {
+      emit(state - 1);
+    });
+  }
+}
 
 // ========== MAIN FUNCTION ==========
 
@@ -29,7 +47,7 @@ Future<void> main() async {
   final cubit = TemperatureCubit();
 
   final cubitSubscription = cubit.stream.listen(
-        (temp) => print('[Cubit] Temperatura actual: $temp°C'),
+    (temp) => print('[Cubit] Temperatura actual: $temp°C'),
   );
 
   cubit.increase(); // 21
@@ -44,7 +62,7 @@ Future<void> main() async {
   final bloc = TemperatureBloc();
 
   final blocSubscription = bloc.stream.listen(
-        (temp) => print('[Bloc] Temperatura actual: $temp°C'),
+    (temp) => print('[Bloc] Temperatura actual: $temp°C'),
   );
 
   bloc.add(IncreaseTemp()); // 21
@@ -55,3 +73,7 @@ Future<void> main() async {
   await bloc.close();
   await blocSubscription.cancel();
 }
+
+// El mas simple es el Cubit ya que no requiere eventos
+// El Bloc tiene mas estructura y permite manejar varios eventos, su ventaja es la transparencia 
+// Según el caso de lo que se quiera tener como ventaja (simpleza o transparencia) es cual usar 

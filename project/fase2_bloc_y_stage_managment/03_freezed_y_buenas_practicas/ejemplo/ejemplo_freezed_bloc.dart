@@ -8,7 +8,7 @@ part 'ejemplo_freezed_bloc.freezed.dart';
 @freezed
 sealed class FruitEvent with _$FruitEvent {
   const factory FruitEvent.selectedFruit(String addedFruit) =
-  SelectedFruitEvent;
+      SelectedFruitEvent;
 
   const factory FruitEvent.removeFruit(String removedFruit) = RemoveFruitEvent;
 }
@@ -30,12 +30,12 @@ abstract class FruitState with _$FruitState {
 
 final class FruitBloc extends Bloc<FruitEvent, FruitState> {
   FruitBloc()
-      : super(
-    FruitState(
-      selectedFruit: '',
-      availableFruits: ['Manzana', 'Banana', 'Naranja'],
-    ),
-  ) {
+    : super(
+        FruitState(
+          selectedFruit: '',
+          availableFruits: ['Manzana', 'Banana', 'Naranja'],
+        ),
+      ) {
     //Esto es una manera de declarar los handlers de eventos
     // on<SelectedFruitEvent>((event, emit) {
     //   emit(
