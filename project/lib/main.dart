@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'features/integrador_fase1/challenge_integrador_fase1.dart';
+// import 'features/integrador_fase1/challenge_integrador_fase1.dart';
+import 'features/integrador_fase2/challenge_integrador_fase2.dart';
 
 void main() {
-  runApp(const MyApp());
+  // runApp(const MyApp());
+  // runApp(const MaterialApp(home: RegistroMascotaScreen())); // ejercicio integración 1
+  runApp(const MaterialApp(home: BlocFreezedApp())); // ejercicio integración 2
 }
 
 // para correr ejercicio de integracon de fase 1
