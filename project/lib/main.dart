@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 
 // import 'features/integrador_fase1/challenge_integrador_fase1.dart';
-import 'features/integrador_fase2/challenge_integrador_fase2.dart';
+// import 'features/integrador_fase2/challenge_integrador_fase2.dart';
+import 'features/integrador_fase3/challenge/challenge_integrador_fase3.dart';
 
-void main() {
-  // runApp(const MyApp());
-  // runApp(const MaterialApp(home: RegistroMascotaScreen())); // ejercicio integración 1
-  runApp(const MaterialApp(home: BlocFreezedApp())); // ejercicio integración 2
+void main() async {
+  // final app = MyApp();
+  // final app = RegistroMascotaScreen(); // ejercicio integración 1
+  // final app = BlocFreezedApp(); // ejercicio integración 2
+  final app = await notasApp(); // ejercicio integración 3
+
+  runApp(app);
 }
-
-// para correr ejercicio de integracon de fase 1
-// void main() {
-//   runApp(const MaterialApp(home: RegistroMascotaScreen()));
-// }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
