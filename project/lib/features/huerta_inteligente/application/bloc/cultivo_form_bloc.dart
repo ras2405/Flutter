@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../domain/entities/cultivo.dart';
 import '../../domain/services/cultivo_service.dart';
 
 // dart run build_runner build --delete-conflicting-outputs
@@ -23,17 +22,15 @@ class CultivoFormBloc extends Bloc<CultivoFormEvent, CultivoFormState> {
         emit(const CultivoFormState.error('El nombre es obligatorio'));
         return;
       } else if (event.fecha == null) {
-        emit(
-          const CultivoFormState.error(
-            'Seleccionar fecha de siembra es obligatorio',
-          ),
-        );
+        emit(const CultivoFormState.error('Fecha de siembra es obligatorio'));
         return;
-      } else {
-        emit(const CultivoFormState.submitting());
-        await _cultivoService.agregarCultivo(event.nombre, event.fecha!);
-        emit(const CultivoFormState.success());
       }
+      emit(const CultivoFormState.submitting());
+      await _cultivoService.agregarCultivo(event.nombre, event.fecha!);
+      await Future.delayed(
+        const Duration(seconds: 1),
+      ); // Para que se vea loading
+      emit(const CultivoFormState.success());
     });
   }
 }
