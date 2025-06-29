@@ -1,6 +1,4 @@
-import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -110,14 +108,6 @@ class _FormularioScreenState extends State<FormularioScreen> {
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _messageController = TextEditingController();
-
-  @override
-  void dispose() {
-    _nameController.dispose();
-    _emailController.dispose();
-    _messageController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {

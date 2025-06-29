@@ -52,7 +52,7 @@ class _RegistroMascotaScreenState extends State<RegistroMascotaScreen> {
       );
 
       final result = await Navigator.push(
-        // cambia la ruta
+        // Cambia la ruta
         context,
         MaterialPageRoute(
           builder: (context) => DetalleMascotaScreen(mascota: mascota),
@@ -60,7 +60,7 @@ class _RegistroMascotaScreenState extends State<RegistroMascotaScreen> {
       );
 
       if (result == true) {
-        // reinicia formulario
+        // Reinicia formulario
         _nombreController.clear();
         _edadController.clear();
         setState(() => _tipoSeleccionado = null);

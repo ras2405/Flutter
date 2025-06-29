@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get_it/get_it.dart';
 import '../../application/cubit/notas_cubit.dart';
 import '../../application/cubit/notas_state.dart';
-
-final getIt = GetIt.instance;
 
 class NotasPage extends StatelessWidget {
   final TextEditingController _controller = TextEditingController();
