@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:project/features/huerta_inteligente/huerta_inteligente.dart';
 
 // import 'features/integrador_fase1/challenge_integrador_fase1.dart';
 // import 'features/integrador_fase2/challenge_integrador_fase2.dart';
-import 'features/integrador_fase3/challenge/challenge_integrador_fase3.dart';
+// import 'features/integrador_fase3/challenge/challenge_integrador_fase3.dart';
 
 void main() async {
   // final app = MyApp();
   // final app = RegistroMascotaScreen(); // ejercicio integración 1
   // final app = BlocFreezedApp(); // ejercicio integración 2
-  final app = await notasApp(); // ejercicio integración 3
+  // final app = await notasApp(); // ejercicio integración 3
+  final app = await huertaApp(); // ejercicio integración 4
 
   runApp(app);
 }
