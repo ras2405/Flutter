@@ -1,5 +1,5 @@
 import '../entities/mensaje_bienvenida.dart';
 
-abstract class IBienvenidaRepositorio {
+abstract class BienvenidaRepositorio {
   MensajeBienvenida obtenerMensaje();
 }

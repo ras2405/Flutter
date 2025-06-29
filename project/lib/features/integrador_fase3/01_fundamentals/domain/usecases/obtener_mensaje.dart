@@ -1,9 +1,9 @@
 // obtener_mensaje.dart
-import '../../domain/repository/Ibienvenida_repositorio.dart';
+import '../repository/bienvenida_repositorio.dart';
 import '../entities/mensaje_bienvenida.dart';
 
 class ObtenerMensaje {
-  final IBienvenidaRepositorio _repositorio;
+  final BienvenidaRepositorio _repositorio;
 
   ObtenerMensaje(this._repositorio);
 
